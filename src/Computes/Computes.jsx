@@ -50,13 +50,14 @@ function Computes(props) {
     <div className="computers">
       <Form
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 24 }}
+        layout="horizontal"
+        // labelCol={{ span: 24 }}
+        // wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
         onFinish={handleFinish}
         autoComplete="off"
       >
-        <h3>月缴存额</h3>
+        <h3 style={{ marginTop: 10 }}>月缴存额</h3>
         <Form.Item
           label="月缴存额基数:"
           name="monthlyBase"
@@ -68,6 +69,7 @@ function Computes(props) {
           ]}
         >
           <InputNumber
+            style={{ width: "100%" }}
             addonAfter="元"
             placeholder="如公司按照5000基数缴纳,请输入5000"
           />
@@ -78,7 +80,11 @@ function Computes(props) {
           name="personalPaymentRatio"
           rules={[{ required: true, message: "请输入个人缴纳比例!" }]}
         >
-          <InputNumber addonAfter="%" placeholder="如个人缴纳10%，请输入10" />
+          <InputNumber
+            style={{ width: "100%" }}
+            addonAfter="%"
+            placeholder="如个人缴纳10%，请输入10"
+          />
         </Form.Item>
 
         <Form.Item
@@ -86,14 +92,22 @@ function Computes(props) {
           name="companyPaymentRatio"
           rules={[{ required: true, message: "请输入公司缴纳比例!" }]}
         >
-          <InputNumber addonAfter="%" placeholder="如公司缴纳10%，请输入10" />
+          <InputNumber
+            style={{ width: "100%" }}
+            addonAfter="%"
+            placeholder="如公司缴纳10%，请输入10"
+          />
         </Form.Item>
         <Form.Item
           label="贷款期限："
           name="loanTerm"
           rules={[{ required: true, message: "请输入贷款期限!" }]}
         >
-          <InputNumber addonAfter="年" placeholder="如20年，请输入20" />
+          <InputNumber
+            style={{ width: "100%" }}
+            addonAfter="年"
+            placeholder="如20年，请输入20"
+          />
         </Form.Item>
         <h3>缴存余额</h3>
 
@@ -108,8 +122,9 @@ function Computes(props) {
           ]}
         >
           <InputNumber
+            style={{ width: "100%" }}
             addonAfter="元"
-            placeholder="如公司按照5000基数缴纳,请输入5000"
+            placeholder="如缴存余额有1000，输入1000"
           />
         </Form.Item>
         <Form.Item
@@ -123,8 +138,9 @@ function Computes(props) {
           ]}
         >
           <InputNumber
+            style={{ width: "100%" }}
             addonAfter="月"
-            placeholder="如公司按照5000基数缴纳,请输入5000"
+            placeholder="如已缴纳10个月，输入10"
           />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

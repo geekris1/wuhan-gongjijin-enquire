@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import Computes from "./Computes/Computes";
 function App() {
   const [state, updateState] = useState();
+  const ref = useRef();
   function handleDetails() {
     window.open(
       "http://gjj.wuhan.gov.cn/wsbsdt/bszn/dkyw/202112/t20211214_1873303.html"
@@ -20,9 +21,14 @@ function App() {
       current: Math.min(Number(monthlyBaseValue), Number(balenceValue), 700000),
     });
   }
+  useEffect(() => {
+    if (typeof state === "object") {
+      ref.current.scrollTop = 10000;
+    }
+  }, [state]);
   return (
-    <div className="all">
-      <div className="title">
+    <div className="all" ref={ref}>
+      <div className="title" style={{ marginTop: 10 }}>
         本站数据来源：
         <span style={{ color: "#f4364c" }}>武汉住房公积金管理中心</span>
         <span className="details" onClick={handleDetails}>
@@ -31,7 +37,7 @@ function App() {
       </div>
       <Computes onCompute={handleCompute}></Computes>
 
-      <div>
+      <div style={{ marginBottom: 50 }}>
         {state === 0 ? (
           "当前缴纳社保时间不足6个月，无法办理公积金贷款吗"
         ) : state ? (
